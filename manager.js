@@ -13,7 +13,6 @@ const save = (json, x) => {
     });
 }
 
-
 let list = new Array();
 list[0] = "\nWelcome to your task manager, select:\n"
 list[1] = "\n1. To see all your tasks\n"
@@ -36,7 +35,7 @@ const manager = () => {
         else if (answer === "2") {
             rl.question('\nAdd a task: ', (answer) => {
                 addedtask.push(answer);
-                save('tasks.json', addedtask);
+                save('Added_tasks.json', addedtask);
                 console.log("\nYou have added your task!");
                 manager();
             });
@@ -45,11 +44,11 @@ const manager = () => {
             rl.question('\nDelete a task: ', (answer) => {
                 if (addedtask.includes(answer)) {
                     addedtask.splice(addedtask.indexOf(answer), 1);
-                    save('tasks.json', addedtask);
+                    save('Added_tasks.json', addedtask);
                     console.log("\nYou have deleted your task!");
                 } else if (donetask.includes(answer)) {
                     donetask.splice(donetask.indexOf(answer), 1);
-                    save('tasks.json', donetask);
+                    save('Done_tasks.json', donetask);
                     console.log("\nYou have deleted your task!");
                 } else {
                     console.log("\nThe task entered could not be found");
@@ -61,9 +60,9 @@ const manager = () => {
             rl.question('\nMark a task as done: ', (answer) => {
                 if (addedtask.includes(answer)) {
                     addedtask.splice(addedtask.indexOf(answer), 1);
-                    save('tasks.json', addedtask);
+                    save('Added_tasks.json', addedtask);
                     donetask.push(answer);
-                    save('tasks.json', donetask);
+                    save('Done_tasks.json', donetask);
                     console.log("\nYou have marked your task as done!\n");
                 } else {
                     console.log("\nThe task entered could not be found\n");
